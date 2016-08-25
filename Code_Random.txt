@@ -1,0 +1,33 @@
+
+
+void Generate_Random(void)
+{
+int a,time,y;
+
+try:
+a=rand()%9999;
+if(a<1000)
+{
+goto try;
+}
+itoa(buf,a,10);
+}
+
+
+void EEPROM_Random(void)
+{
+		int p=0;
+		p=eeprom_read(0);
+		for(int i=0;i<=p;i++){
+		Generate_Random();
+		}
+		eeprom_write(0, (p+1));
+}
+
+
+void main()
+{
+		EEPROM_Random();
+		return 0;
+}
+
